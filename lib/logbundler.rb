@@ -6,4 +6,8 @@ class Logbundler
   def initialize
     @config = Logbundler::Config.new
   end
+
+  def read_config_from_dir(dir)
+    
+  end
 end

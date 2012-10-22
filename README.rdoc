@@ -4,13 +4,13 @@
 
 Logbundler automates the creation of diagnostic archives for offline debug and analysis of a server/application.  A config file specifies what log files to gather and what commands to run and gather output from.
 
-= OUTSTANDING QUESTIONS:
+Supports Ruby 1.8+???
 
-Should the spec have metadata to match the system type?  Useful for Avance.
+= CONFIG FILES:
 
-= SPECFILE:
+Logbundler reads JSON config files, which describe what files and command outputs to bundle up.
 
-Logbundler reads spec files in JSON or YAML encoding, describing what files and command outputs to gather.  For example
+For example...
 
 <tt>
 {
@@ -25,6 +25,14 @@ Logbundler reads spec files in JSON or YAML encoding, describing what files and 
   ]
 }
 </tt>
+
+= TO DO:
+
+* Basic bundle from single config file (first step)
+* Unit test basic bundle
+* Get gem build working
+* Set up Travis CI for continuous test and to verify with multiple versions of Ruby
+* Test on Windows
 
 = LINKS:
 

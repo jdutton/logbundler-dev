@@ -31,10 +31,10 @@ class Logbundler::ConfigTest < Test::Unit::TestCase
     ],
   }
 
-  def test_read_yaml
-    yaml = YAML.dump(CFG)
+  def test_read_json
+    json = JSON.dump(CFG)
     cfg = Logbundler::Config.new
-    cfg.read_yaml(yaml)
+    cfg.read_json(json)
     assert_equal 'sys/dmidecode.out', cfg.get('system')[1]['stdout']
   end
   

@@ -1,4 +1,4 @@
-require 'yaml'
+require 'json'
 
 class Logbundler
 
@@ -13,11 +13,11 @@ class Logbundler
     end
 
     def read(file)
-      read_yaml(File.read(file))
+      read_json(File.read(file))
     end
     
-    def read_yaml(str)
-      cfg = YAML.load(str)
+    def read_json(str)
+      cfg = JSON.load(str)
       add(cfg)
     end
 

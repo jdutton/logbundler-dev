@@ -11,13 +11,9 @@ Gem::Specification.new do |s|
   s.homepage = 'https://github.com/jdutton/logbundler'
 
   s.add_dependency 'rubyzip'
-  s.add_dependency 'yajl-ruby'
-
-  if s.platform.to_s == 'x86-mswin32'
-    s.add_dependency 'systemu', '~> 2.2.0'  # See https://github.com/ahoward/systemu/issues/14
-  else
-    s.add_dependency 'systemu'
-  end
+  s.add_dependency 'json'
+  s.add_dependency 'mixlib-shellout'
+  s.add_dependency 'rake'
 
   s.add_development_dependency 'bundler'
   s.add_development_dependency 'rspec-core'
