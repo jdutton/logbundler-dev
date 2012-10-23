@@ -1,15 +1,15 @@
 require 'test/unit'
 require 'logbundler'
 
-class Logbundler::ConfigTest < Test::Unit::TestCase
+class Logbundler::MakeBundleTest < Test::Unit::TestCase
 
   # example config Ruby hash
   CFG = {
     'system' => [ # System Log Group
       {
-        'shell' => 'rpm -qa',
-        'timeout' => '10s',
-        'stdout' => 'rpms/rpm-qa.stdout',
+        'shell' => 'ls ~',
+        'timeout' => '2s',
+        'stdout' => 'home/ls.out',
       },
       {
         'shell' => 'dmidecode',
@@ -31,11 +31,14 @@ class Logbundler::ConfigTest < Test::Unit::TestCase
     ],
   }
 
-  def test_read_json
-    json = JSON.dump(CFG)
-    cfg = Logbundler::Config.new
-    cfg.read_json(json)
-    assert_equal 'sys/dmidecode.out', cfg['system'][1]['stdout']
+  def setup
+    @json_str = JSON.dump(CFG)
   end
-  
+
+  def test_make_bundle
+    logbundle = Logbundler.new
+    logbundle.read_config(@json_str)
+    logbundle.execute
+  end
+
 end

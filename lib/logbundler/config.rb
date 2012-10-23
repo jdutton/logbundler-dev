@@ -3,16 +3,34 @@ require 'json'
 class Logbundler
 
   class Config
+    include Enumerable
 
     def initialize
       @config = Hash.new
     end
 
-    def get(category)
+    def [](category)
       @config[category]
     end
 
-    def read(file)
+    def each()
+      @config.each_pair do |group, entity_list|
+        next unless entity_list.respond_to?(:each)
+        entity_list.each do |entity|
+          yield entity
+        end
+      end
+    end
+
+    def read(hash_or_jsonstr)
+      if hash_or_jsonstr.is_a?(String)
+        read_json(hash_or_jsonstr)
+      else
+        add(hash_or_jsonstr)
+      end
+    end
+
+    def read_file(file)
       read_json(File.read(file))
     end
     

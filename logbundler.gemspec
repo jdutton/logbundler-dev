@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rake'
 
   s.add_development_dependency 'bundler'
-  s.add_development_dependency 'rspec-core'
+  s.add_development_dependency 'minitest'
 
   s.bindir = 'bin'
   s.executables = %w( logbundler )
