@@ -8,12 +8,15 @@ class Logbundler::MakeBundleTest < Test::Unit::TestCase
     'system' => [ # System Log Group
       {
         'shell' => 'ls ~',
-        'timeout' => '2s',
+        'timeout' => '5s',
         'stdout' => 'home/ls.out',
       },
       {
-        'shell' => 'dmidecode',
-        'timeout' => '5s',
+        'shell' => 'env > $TMPDIR/env.out',
+      },
+      {
+        'shell' => 'sleep 10000',
+        'timeout' => '2s',
         'stdout' => 'sys/dmidecode.out',
       },
     ],
